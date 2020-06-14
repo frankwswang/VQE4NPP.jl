@@ -1,0 +1,11 @@
+name = "VQE4NPP"
+uuid = "91188ac4-c77d-4cab-b100-50cb5b7964c6"
+authors = ["frankwswang <frank.wang.w.s@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+Yao = "5872b779-8223-5990-8dd0-5abbb0748c8c"
+YaoExtensions = "7a06699c-c960-11e9-3c98-9f78548b5f0f"

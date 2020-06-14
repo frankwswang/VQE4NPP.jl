@@ -1,5 +1,5 @@
-include("../scr/VQE4NPP.jl")
-
+using VQE4NPP
+Pkg.add("Random")
 STH = 1e-8
 PTH = 1e-7
 CTH = 1e-3
