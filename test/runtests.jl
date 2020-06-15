@@ -1,4 +1,3 @@
-# push!(LOAD_PATH, abspath("src"))
 using Test
 using VQE4NPP
 using Yao
@@ -78,8 +77,6 @@ end
     s = 50
     set = RandIntNumSet(n,s)
     res = VQEtrain(set, depth = d, niter=1000, autoTrain=false, showTrain=false)
-    # ic = res[4]
-    # ic == 0 && ic = ic +1 
     @test res[1][end] < 0.5
     @test res[3][end-dx] < 1e-8*5
     @test res[1][res[4]] == res[5]

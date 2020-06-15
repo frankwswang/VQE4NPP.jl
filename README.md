@@ -3,7 +3,7 @@ __VQE4NPP__ is a julia package for applying a quantum-classical hybrid algorithm
 
 ## Main functions
 ### RandIntNumSet
-Generating a random number set that has an equi-partition solution. 
+Generating a random number set that has an equi-partition solution.
 
 ### VQEtrain
 Training the VQE to decrease the energy of a Hailtonian corresponding to the target number set. An auto-train with user-defined thresholds is available.
