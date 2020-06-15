@@ -19,7 +19,7 @@ using VQE4NPP
     end
 
     # Test function accuracy without mean-value compensation of data fluctuation.
-    h = 2
+    h = 1
     di = 0
     for j=1+2h+di:size-2h-di
         @test ders[j] ≈ VQE4NPP.curveGrad(j, func, h=h, di = di)[1]
