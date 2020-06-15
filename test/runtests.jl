@@ -34,7 +34,7 @@ end
     H1 = VQE4NPP.HofNPP(set, c)
     H2 = put(n,1=>Z)
     for i = 2:n
-        H2 = H2 + put(n,i=>Z)
+        H2 = H2 + set[i]*put(n,i=>Z)
     end
     H2 = c*H2^2
     reg = rand_state(n)
