@@ -32,7 +32,7 @@ end
     c = 0.7
     set = rand(1:20,n)    
     H1 = VQE4NPP.HofNPP(set, c)
-    H2 = put(n,1=>Z)
+    H2 = set[1]*put(n,1=>Z)
     for i = 2:n
         H2 = H2 + set[i]*put(n,i=>Z)
     end
