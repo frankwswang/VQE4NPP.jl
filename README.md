@@ -1,5 +1,5 @@
 # VQE4NPP.jl
-__VQE4NPP__ is a julia package for applying variational quantum eigensolver (VQE) on number partitioning problems.
+__VQE4NPP__ is a julia package for applying a quantum-classical hybrid algorithm called variational quantum eigensolver (VQE) on number partitioning problems.
 
 ## Main functions
 ### RandIntNumSet

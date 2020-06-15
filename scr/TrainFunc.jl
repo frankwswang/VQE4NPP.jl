@@ -35,11 +35,11 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
                   autoTrain::Bool=true, 
                   niterMax::Float64=5000,
                   Optimizer::Symbol=:NADAM, 
-                  StopTH::Float64=2e-9, 
+                  StopTH::Float64=1e-8, 
                   PerturbTH::Float64=1e-7, 
                   Threshold::Float64=0.5, 
-                  PurtAmp::Float64=0.05, 
-                  ConvergeTH::Float64=1e-4)
+                  PurtAmp::Float64=0.02, 
+                  ConvergeTH::Float64=1e-3)
     
     H = HofNPP(set)
     n = nqubits(H)

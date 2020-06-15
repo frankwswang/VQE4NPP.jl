@@ -10,7 +10,7 @@ Numerical differentiation (5-point method) of the input function f which is in t
     \n`i::Int64`: The point (index) for derivative calcualtion.
     \n`f::Array{Float64,1}`: The array of function values.
     \n`h::Int64`: The interval h. Default value is 5. 
-    \n`di::Int64`: An addtional interval for mean value at each point to compenstate the data fluctuation. Default value is 2. 
+    \n`di::Int64`: An addtional interval for mean value at each point to compenstate the data fluctuation. Default value is 2, which means the mean of 2*2+1 sequential values. 
     \n== Output variables ==
     \n`grad::Float64`: Derivative of f at point (index) i.
     \n`iLB::Int64`: Lower bound requirement for the index.
@@ -43,7 +43,6 @@ Generating the corresponding Hamiltonian given a number set.
 """
 function HofNPP(numSet::Array{Int64,1}, Coeff::Float64=1.0)
     nbit = length(numSet)
-    # sz = i->put(nbit, i=>X)
     sz = i->put(nbit, i=>Z)
     H = map(1:nbit) do i
             numSet[i]*sz(i)
@@ -58,12 +57,13 @@ end
     set::Array{Int64,1}
 Randomly generating number set with equi-partition soluttions.
     \n== Arguments ==
-    \n`size::Int64`: 
-    \n`sum::Int64`: 
+    \n`size::Int64`: The size (number of elements) of the target number set.
+    \n`sum::Int64`: The sum of elements inside the target number set.
+    \n`isShuffled::Bool`: Shuffle the elements inside the set to eliminate a trivial solution for the equi-partition. Default value is true. 
     \n== Output variables ==
     \n`set::Array{Int64,1}`: The generated number set.
 """
-function RandIntNumSet(size::Int64, sum::Int64)
+function RandIntNumSet(size::Int64, sum::Int64; isShuffled::Bool=true)
     indexSet = [1:sum;]
     middle = Int(round(sum/2))
     deleteat!(indexSet, (middle, sum))
@@ -72,7 +72,8 @@ function RandIntNumSet(size::Int64, sum::Int64)
     set = map(2:size+1) do i
             selection[i]-selection[i-1]
         end
-    @show size, sum  
-    @show set
-    set |> shuffle!
+    if isShuffled == true
+        set |> shuffle!
+    end
+    set
 end
