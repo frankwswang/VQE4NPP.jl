@@ -15,14 +15,14 @@ using VQE4NPP
     h = 5
     di = 2
     for j=1+2h+di:size-2h-di
-        @test ders[j] ≈ curveGrad(j, func)
+        @test ders[j] ≈ VQE4NPP.curveGrad(j, func)
     end
 
     # Test function accuracy without mean-value compensation of data fluctuation.
     h = 2
     di = 0
     for j=1+2h+di:size-2h-di
-        @test ders[j] ≈ curveGrad(j, func, h=2, di = 0)
+        @test ders[j] ≈ VQE4NPP.curveGrad(j, func, h=2, di = 0)
     end 
 end
 
@@ -30,7 +30,7 @@ end
     n = 5
     c = 0.7
     set = rand(1:20,n)    
-    H1 = HofNPP(set, c)
+    H1 = VQE4NPP.HofNPP(set, c)
     H2 = put(n,1=>Z)
     for i = 2:n
         H2 = H2 + put(n,i=>Z)
