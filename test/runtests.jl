@@ -73,10 +73,10 @@ end
     dx = 12 # 2*5+2, h=5, di=2    
     #Test the range of each output variables.
     n = 3
-    d = 4
+    d = 6
     s = 50
     set = RandIntNumSet(n,s)
-    res = VQEtrain(set, depth = d, niter=1000, autoTrain=false, showSteps=false)
+    res = VQEtrain(set, depth = d, niter=2000, autoTrain=false, showSteps=false)
     @test res[1][end] < 0.5
     @test res[3][end-dx] < 1e-8*5
     @test res[1][res[4]] == res[5]
