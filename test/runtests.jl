@@ -76,7 +76,7 @@ end
     d = 4
     s = 50
     set = RandIntNumSet(n,s)
-    res = VQEtrain(set, depth = d, niter=1000, autoTrain=false, showTrain=false)
+    res = VQEtrain(set, depth = d, niter=1000, autoTrain=false, showSteps=false)
     @test res[1][end] < 0.5
     @test res[3][end-dx] < 1e-8*5
     @test res[1][res[4]] == res[5]
@@ -89,7 +89,7 @@ end
     d = 6
     s = 200
     set = RandIntNumSet(n,s)
-    res = VQEtrain(set, depth = d, showTrain=false)
+    res = VQEtrain(set, depth = d, showSteps=false)
     iPd = findall(i->i==1, res[2])
     for i = 1:length(iPd)
         @test (res[1][iPd[i]] - res[1][iPd[i]-1]) > (res[1][iPd[i]-1] - res[1][iPd[i]-2]) |> abs

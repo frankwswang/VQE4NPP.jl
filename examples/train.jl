@@ -1,11 +1,10 @@
-using VQE4NPP
-STH = 1e-8
-PTH = 1e-7
-CTH = 1e-3
-Niter = 5000
+push!(LOAD_PATH, abspath("src"))
 
-n = 8
-d = 4
-s = 100
-set = RandIntNumSet(n,s)
-VQEtrain(set, depth = d, StopTH = STH, ConvergeTH=CTH, PerturbTH = PTH, PurtAmp = 0.02, niter=Niter, autoTrain=false)
+using VQE4NPP
+
+s = 100 # Define the sum of the elements inside the target set. 
+n = 5 # Define the number of elements inside the target set.
+d = 6 # Define the depth of the differentiable circuit.
+
+set = RandIntNumSet(n,s) # Create the target number set based on configurartions
+VQEtrain(set, depth = d) # Train the VQE for the corresponding Hamiltonian of the target set.
