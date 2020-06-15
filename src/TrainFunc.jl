@@ -33,13 +33,14 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
                   depth::Int64=4, 
                   niter::Int64=100, 
                   autoTrain::Bool=true, 
-                  niterMax::Float64=5000,
+                  niterMax::Int64=5000,
                   Optimizer::Symbol=:NADAM, 
                   StopTH::Float64=1e-8, 
                   PerturbTH::Float64=1e-7, 
                   Threshold::Float64=0.5, 
                   PurtAmp::Float64=0.02, 
-                  ConvergeTH::Float64=1e-3)
+                  ConvergeTH::Float64=1e-3,
+                  showTrain::Bool=true)
     
     H = HofNPP(set)
     n = nqubits(H)
@@ -87,12 +88,12 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
         i=i+1
         cg, __ = curveGrad(i-len2Grad,Hvalues, h=5, di=2)
         append!(dEs, cg)
-        iDisplay(i) && println("Step $i, E = $(round(Hvalues[i], sigdigits=6)), dE = $(round(cg, sigdigits=6))")  
+        iDisplay(i) && showTrain == true && println("Step $i, E = $(round(Hvalues[i], sigdigits=6)), dE = $(round(cg, sigdigits=6))")  
         if iConverge == 0 
             if abs(cg) <= ConvergeTH 
                 iConverge = i-len2Grad
                 EConverge = Hvalues[iConverge]
-                println("Started to Coverge at Step $i,E = $(round(Hvalues[i], sigdigits=6))")
+                showTrain == true && println("Started to Coverge at Step $i,E = $(round(Hvalues[i], sigdigits=6))")
             end
         else
             if abs(cg) <= PerturbTH && k == 0 && Hvalues[i] > sum(set)%2 + Threshold
@@ -100,7 +101,7 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
                 if t > 0 
                     sign = -sign
                 end
-                println("Perturbation Activated")
+                showTrain == true && println("Perturbation Activated")
                 RXs = collect_blocks(RotationGate{1,Float64,XGate},circuit)
                 dispatch!.(-,RXs,sign*PurtAmp*ones(length(RXs)))
                 k = k + 100
