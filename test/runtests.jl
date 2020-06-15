@@ -1,5 +1,6 @@
 using Test
 using VQE4NPP
+using Yao
 
 @testset "curveGrad() test" begin
     size = 20
