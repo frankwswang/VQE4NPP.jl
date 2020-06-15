@@ -40,9 +40,9 @@ end
     reg = rand_state(n)
     cX = chain(n, [put(n, i=>Ry(pi/2)) for i=1:n])
     cY = chain(n, [put(n, i=>Rx(pi/2)) for i=1:n])
-    @test expect(H1, reg => cX) == expect(H2, reg => cX)
-    @test expect(H1, reg => cY) == expect(H2, reg => cY)
-    @test expect(H1, reg) == expect(H2, reg)  
+    @test expect(H1, copy(reg) => cX) == expect(H2, copy(reg) => cX)
+    @test expect(H1, copy(reg) => cY) == expect(H2, copy(reg) => cY)
+    @test expect(H1, copy(reg)) == expect(H2, copy(reg))  
 end
 
 @testset "RandIntNumSet() test" begin
