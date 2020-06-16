@@ -14,7 +14,7 @@ The training function for VQE4NPP.
     \n`niter::Int64`: The number of ierations.
     \n`autoTrain::Bool`: The option to enable auto training iterations.
     \n`niterMax::Float64`: The maximal number of ierations when applying `autoTain`.
-    \n`Optimizer::Symbol`: The optimizer for gradient descent method. The default optimizer is NADAM.
+    \n`Optimizer::Function`: The optimizer function for Gradient Descent. The default optimizer is NADAM from package Flux.jl and can be replaced by user-defined function in forms of `(args...)->f(args...)`.
     \n`StopTH::Float64`: The threshold of the derivative of the training curve to stop training. 
     \n`PerturbTH::Float64`: The threshold of the derivative of the training curve to apply perturbations.
     \n`Threshold::Float64`: The threshold for determining whether the <H> is small enough.  
@@ -34,7 +34,7 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
                   niter::Int64=100, 
                   autoTrain::Bool=true, 
                   niterMax::Int64=5000,
-                  Optimizer::Symbol=:NADAM, 
+                  Optimizer::Function=()->NADAM() 
                   StopTH::Float64=1e-8, 
                   PerturbTH::Float64=1e-7, 
                   Threshold::Float64=0.5, 
@@ -57,15 +57,15 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
     len2Grad = 2h+di 
     dEs = repeat([NaN],len2Grad)
     isPerturbed = zeros(len2Grad*2)
-    if Optimizer == :ADAM
-        GM = ()->ADAM()
-    elseif Optimizer == :NADAM
-        GM = ()->NADAM()
-    elseif Optimizer == :AMSGrad
-        GM = ()->AMSGrad()
-    else
-        GM = Optimizer
-    end
+    # if Optimizer == :ADAM
+    #     GM = ()->ADAM()
+    # elseif Optimizer == :NADAM
+    #     GM = ()->NADAM()
+    # elseif Optimizer == :AMSGrad
+    #     GM = ()->AMSGrad()
+    # else
+    #     GM = Optimizer
+    # end
    
     if autoTrain == true
         iDisplay = (i) -> i%200 == 0
@@ -75,7 +75,7 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
     while i < len2Grad*2
         _, grad = expect'(H, zero_state(n)=>circuit) 
         pars = parameters(circuit)
-        dispatch!(circuit, Flux.Optimise.update!(GM(), pars, grad))
+        dispatch!(circuit, Flux.Optimise.update!(Optimizer(), pars, grad))
         append!(Hvalues, real.(expect(H, zero_state(n)=>circuit)))
         i = i + 1
     end
