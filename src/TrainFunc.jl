@@ -82,7 +82,7 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
     while i < niter
         _, grad = expect'(H, zero_state(n)=>circuit) 
         pars = parameters(circuit)
-        dispatch!(circuit, Flux.Optimise.update!(GM(), pars, grad))
+        dispatch!(circuit, Flux.Optimise.update!(Optimizer(), pars, grad))
         append!(Hvalues, real.(expect(H, zero_state(n)=>circuit)))
         append!(isPerturbed, floor(k/100))
         i=i+1
