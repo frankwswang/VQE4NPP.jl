@@ -116,7 +116,7 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
         end
     end
     append!(dEs,repeat([NaN],len2Grad))
-    println("Final step ($(length(Hvalues))), E = $(round(Hvalues[end], sigdigits=6))")
+    println("Total steps: $(length(Hvalues)), Final E: $(round(Hvalues[end], sigdigits=6))")
     ECmin, imin = findmin(Hvalues)
     ECmm = 0
     if length(Hvalues)- imin < 2
