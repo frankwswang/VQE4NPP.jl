@@ -34,7 +34,7 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
                   niter::Int64=100, 
                   autoTrain::Bool=true, 
                   niterMax::Int64=5000,
-                  Optimizer::Function=()->NADAM() 
+                  Optimizer::Function=()->NADAM(), 
                   StopTH::Float64=1e-8, 
                   PerturbTH::Float64=1e-7, 
                   Threshold::Float64=0.5, 
