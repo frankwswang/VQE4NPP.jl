@@ -1,6 +1,7 @@
 # VQE4NPP
 
 [![Build Status](https://travis-ci.com/frankwswang/VQE4NPP.jl.svg?branch=master)](https://travis-ci.com/frankwswang/VQE4NPP.jl)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/frankwswang/VQE4NPP.jl?svg=true)](https://ci.appveyor.com/project/frankwswang/VQE4NPP-jl)
 [![Coverage](https://codecov.io/gh/frankwswang/VQE4NPP.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/frankwswang/VQE4NPP.jl)
 
 __VQE4NPP__ is a julia package for applying a quantum-classical hybrid algorithm called variational quantum eigensolver (VQE) on number partitioning problems.
