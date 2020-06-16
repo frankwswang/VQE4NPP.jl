@@ -44,8 +44,6 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
     
     H = HofNPP(set)
     n = nqubits(H)
-    circuit = variational_circuit(n,depth)
-    dispatch!(circuit, :random)
     i = 0
     k = 0
     h = 5
@@ -57,16 +55,9 @@ function VQEtrain(set::Union{Array{Int64,1}, Array{Float64,1}};
     len2Grad = 2h+di 
     dEs = repeat([NaN],len2Grad)
     isPerturbed = zeros(len2Grad*2)
-    # if Optimizer == :ADAM
-    #     GM = ()->ADAM()
-    # elseif Optimizer == :NADAM
-    #     GM = ()->NADAM()
-    # elseif Optimizer == :AMSGrad
-    #     GM = ()->AMSGrad()
-    # else
-    #     GM = Optimizer
-    # end
    
+    circuit = variational_circuit(n,depth)
+    dispatch!(circuit, :random)
     if autoTrain == true
         iDisplay = (i) -> i%200 == 0
     else
