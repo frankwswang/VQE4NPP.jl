@@ -14,8 +14,8 @@ Generating a random number set that has an equi-partition solution.
 Training the VQE to decrease the energy of a Hailtonian corresponding to the target number set. An auto-training option with multiple adjustable thresholds is available.
 
 ## Setup Guide
-### Julia Environment
-* [__Julia 1.4__](https://julialang.org)
+### Currently compatible Julia versions
+* [__Julia 1.3 - 1.4__](https://julialang.org)
 
 ### Installation
 Type `]` in Julia REPL to enter `Pkg` mode, then type:
