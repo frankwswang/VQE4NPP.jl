@@ -1,7 +1,7 @@
 name = "VQE4NPP"
 uuid = "91188ac4-c77d-4cab-b100-50cb5b7964c6"
 authors = ["frankwswang <frank.wang.w.s@gmail.com>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
