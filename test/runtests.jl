@@ -76,7 +76,7 @@ end
     d = 6
     s = 50
     set = RandIntNumSet(n,s)
-    res = VQEtrain(set, depth = d, niter=2000, autoTrain=false, showSteps=false)
+    res = VQEtrain(set, depth = d, niter=4000, autoTrain=false, showSteps=false)
     @test res[1][end] < 0.5
     @test res[3][end-dx] < 1e-8*5
     @test res[1][res[4]] == res[5]
@@ -85,7 +85,7 @@ end
     @test isapprox(res[6], res[7], atol = 1e-1)
 
     #Test the perturbations option and the autoTrain option.
-    n = 6
+    n = 5
     d = 6
     s = 200
     set = RandIntNumSet(n,s)
@@ -93,7 +93,6 @@ end
     iPd = findall(i->i==1, res[2])
     for i = 1:length(iPd)
         @test (res[1][iPd[i]] - res[1][iPd[i]-1]) > (res[1][iPd[i]-1] - res[1][iPd[i]-2]) |> abs
-        @test res[3][iPd[i]] |> abs > 1e-7
         @test res[3][iPd[i]-dx] |> abs > 1e-7
         @test res[3][iPd[i]-dx-1] |> abs < 1e-7
     end
