@@ -13,9 +13,14 @@ Generating a random number set that has an equi-partition solution.
 ### VQEtrain
 Training the VQE to decrease the energy of a Hailtonian corresponding to the target number set. An auto-training option with multiple adjustable thresholds is available.
 
+For more introductions and tutorials about MSQR's functions please check the __examples__ directory in the repository as well as the function documentation using Julia's [__`Help` mode__](https://docs.julialang.org/en/v1/stdlib/REPL/#Help-mode-1).
+
 ## Setup Guide
-### Currently compatible Julia versions
+### Julia compatibility
 * [__Julia 1.3 - 1.4__](https://julialang.org)
+
+### Yao compatibility
+This package is written to be compatible with a quantum simulation framework called [__Yao (v0.6)__](https://github.com/QuantumBFS/Yao.jl), which means you can interact with __VQE4NPP__ using __Yao__'s functions.
 
 ### Installation
 Type `]` in Julia REPL to enter `Pkg` mode, then type:
@@ -27,4 +32,4 @@ pkg> add https://github.com/frankwswang/VQE4NPP.jl
 Lucas, A. (2014). Ising formulations of many NP problems. Frontiers in Physics, 2, 5. ([DOI: 10.3389/fphy.2014.00005](https://www.frontiersin.org/articles/10.3389/fphy.2014.00005/full))
 
 ## License
-VQE4NPP.jl is released under MIT License.
+__VQE4NPP__ is released under MIT License.

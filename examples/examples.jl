@@ -1,5 +1,3 @@
-push!(LOAD_PATH, abspath("src"))
-
 using VQE4NPP
 
 s = 100 # Define the sum of the elements inside the target set. 
