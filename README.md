@@ -4,7 +4,7 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/frankwswang/VQE4NPP.jl?svg=true)](https://ci.appveyor.com/project/frankwswang/VQE4NPP-jl)
 [![Coverage](https://codecov.io/gh/frankwswang/VQE4NPP.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/frankwswang/VQE4NPP.jl)
 
-__VQE4NPP__ is a julia package for applying a quantum-classical hybrid algorithm called variational quantum eigensolver (VQE) on number partitioning problems.
+__VQE4NPP__ is a julia package for applying a quantum-classical hybrid algorithm called variational quantum eigensolver (VQE) on number partitioning problems (NPP).
 
 ## Main functions
 ### RandIntNumSet
@@ -13,7 +13,7 @@ Generating a random number set that has an equi-partition solution.
 ### VQEtrain
 Training the VQE to decrease the energy of a Hailtonian corresponding to the target number set. An auto-training option with multiple adjustable thresholds is available.
 
-For more introductions and tutorials about MSQR's functions please check the __examples__ directory in the repository as well as the function documentation using Julia's [__`Help` mode__](https://docs.julialang.org/en/v1/stdlib/REPL/#Help-mode-1).
+__NOTE:__ For more introductions and tutorials about MSQR's functions please check the __examples__ directory in the repository as well as the function documentation using Julia's [__`Help` mode__](https://docs.julialang.org/en/v1/stdlib/REPL/#Help-mode-1).
 
 ## Setup Guide
 ### Julia compatibility
